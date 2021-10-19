@@ -4,12 +4,13 @@
 
 import pandas as pd
 import numpy as np
+import csv
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 import datetime
 
-df = pd.read_csv('./sample.csv',header=0)
+df = pd.read_csv('./csv/sample2.csv',header=0)
 
 # 標準化
 #scaler = StandardScaler()
@@ -37,7 +38,13 @@ model.fit(X_train, Y_train)
 coef = pd.DataFrame({"col_name":np.array(col_name),"coefficient":model.coef_}).sort_values(by='coefficient')
 
 # 結果
-print("【回帰係数】", coef)
-print("【切片】:", model.intercept_)
-print("【決定係数(訓練)】:", model.score(X_train, Y_train))
-print("【決定係数(テスト)】:", model.score(X_test, Y_test))
+
+#f = open('out.csv',"w")
+coef.to_csv("out.csv")
+#writer = csv.writer(f)
+#writer.writerows(print("【回帰係数】", coef))
+#f.close()
+#print("【回帰係数】", coef)
+#print("【切片】:", model.intercept_)
+#print("【決定係数(訓練)】:", model.score(X_train, Y_train))
+#print("【決定係数(テスト)】:", model.score(X_test, Y_test))
