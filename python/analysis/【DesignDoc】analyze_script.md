@@ -18,22 +18,6 @@ Status:Draft
 
 ## Detailed Design
 
-### Flowchart CSV_ReadWrite
-
-```flow
-start=>start: start
-end=>end: end
-
-process1=>operation: csvファイルの読み込み
-process2=>operation: 金庫顧客数の追記
-process3=>operation: 総顧客数の追記
-process4=>operation: jobIDの設定
-process5=>operation: WDの設定
-
-start->process1->process2->process3
-process3->process4->process5->end
-```
-
 ### Flowchart regressionAnalysis
 
 ```flow
@@ -55,22 +39,19 @@ process3->process4->end
   - 原本csvファイル形式
     - day, job, Ptime, starttime, endtime
   - 加工後csvファイル形式
-    - day, job, Ptime, starttime, endtime, kokyaku, kokyaku_total, WD, jobID
+    - day, job, Ptime, starttime, endtime, kokyaku, kokyaku_total, WD
 
 1. CSV_ReadWrite
 2. regressionAnalysis  
 
-- CSV_ReadWrite
-  1. csvファイルを指定して、データの読み込みを行う  
-  2. jobIDをもとにkokyakuを追記
-  3. dayをもとにkokyaku_totalを追記
-  4. dayをもとにWDを設定
-  5. jobIDをあらかじめ規定した数値に変換
-  6. 加工後csvファイルを出力する
-
 - regressionAnalysis
   1. 目的変数：Ptime(処理時間)とする
-  2. 説明変数：kokyaku, kokyaku_total, WD, jobIDとする
+  2. 説明変数：kokyaku, kokyaku_total, WD, coreとする
   3. 条件に従って重回帰分析を実行する
 - 出力
   1. 重回帰分析結果をファイル出力する
+  2. 出力対象を以下に記載する
+     - ジョブごとの回帰係数および標準化回帰係数
+     - 切片
+     - 決定係数
+     - グラフ（そのまま・標準化後）
