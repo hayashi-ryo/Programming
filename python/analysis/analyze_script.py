@@ -10,13 +10,13 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 import datetime
 
-df = pd.read_csv('./csv/sample2.csv',header=0)
+df = pd.read_csv('./csv/E_JSCRMHKX01_.csv',header=0)
 
 # 標準化
-#scaler = StandardScaler()
-#scaler.fit(np.array(df))
-#df_std = scaler.transform(np.array(df))
-#df_std = pd.DataFrame(df_std,columns=df.columns)
+scaler = StandardScaler()
+scaler.fit(np.array(df))
+df_std = scaler.transform(np.array(df))
+df_std = pd.DataFrame(df_std,columns=df.columns)
 
 # 目的変数(Y)
 Y = np.array(df['Ptime'])
@@ -39,10 +39,11 @@ coef = pd.DataFrame({"col_name":np.array(col_name),"coefficient":model.coef_}).s
 
 # 結果
 
-#f = open('out.csv',"w")
+
 coef.to_csv("out.csv")
+#f = open('out.csv',"w")
 #writer = csv.writer(f)
-#writer.writerows(print("【回帰係数】", coef))
+#writer.writerows(print("【切片】:", model.intercept_))
 #f.close()
 #print("【回帰係数】", coef)
 #print("【切片】:", model.intercept_)
