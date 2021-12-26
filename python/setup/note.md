@@ -25,5 +25,26 @@
    4. 落としてきたイメージを念の為確認
       `docker images`
    5. dockerを起動
-      `docker run -it continuumio/anaconda3:2019.03`
+      `docker run -it continuumio/anaconda3`
    6. ホストOS側に参照用フォルダを作成
+      - フォルダ構成
+        - docker_JupyterNote -- data
+        - docker_JupyterNote:Ipythonプログラムの格納フォルダ
+        - data:参照用データ格納フォルダ
+   7. docker_JupyterNoteに移動
+   8. dockerを起動
+      `docker run --name JupyterNote -v :/notebook -p 8888:8888 --rm -it continuumio/anaconda3`
+      - 各種オプション
+          >  【docker run + オプション(下記) + イメージ】
+          >  --name → コンテナ名を指定(なくてもいい)
+          >  -v → マウント指定(コロンの左側がローカル側、右側がコンテナ側のpath)
+          >  -p → ポート接続(コロンの左側がローカル側、右側がコンテナ側※jupyterは8888)
+          >  --rm → コンテナ終了時にコンテナ自動的に削除
+          >  --it → ホスト側のターミナルからコンテナ内部の操作
+          >  ※^ は長いコマンドの場合に改行の意味を示すコマンド(キャレット)
+          >  ※-v "%cd%":/notebook の意味は「ローカル側が未記載≒今のpath(docker_sample)」、
+          >  「コンテナ側はnotebookフォルダ」をマウントさせるという意味。
+          >  notebookフォルダはデフォルトでは存在しないのでコンテナ側で作成される
+   9. Jupyter Notebookを起動
+        `jupyter notebook --ip 0.0.0.0 --allow-root --no-browser --NotebookApp.disable_check_xsrf=True  --NotebookApp.token='' --NotebookApp.password=''`
+   10. 
