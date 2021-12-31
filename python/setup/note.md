@@ -47,4 +47,3 @@
           >  notebookフォルダはデフォルトでは存在しないのでコンテナ側で作成される
    9. Jupyter Notebookを起動
         `jupyter notebook --ip 0.0.0.0 --allow-root --no-browser --NotebookApp.disable_check_xsrf=True  --NotebookApp.token='' --NotebookApp.password=''`
-   10. 
