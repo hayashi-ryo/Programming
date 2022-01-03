@@ -33,7 +33,7 @@
         - data:参照用データ格納フォルダ
    7. docker_JupyterNoteに移動
    8. dockerを起動
-      `docker run --name JupyterNote -v :/notebook -p 8888:8888 --rm -it continuumio/anaconda3`
+      `docker run --name JupyterNote -v /Users/hayashir/work/4_Programming/git/Programmig/python/docker_JupyterNote:/notebook -p 8888:8888 --rm -it continuumio/anaconda3`
       - 各種オプション
           >  【docker run + オプション(下記) + イメージ】
           >  --name → コンテナ名を指定(なくてもいい)
