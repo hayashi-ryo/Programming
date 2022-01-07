@@ -19,7 +19,7 @@ EXPOSE 8888
 # ”--no-browser” => ブラウザを立ち上げない。コンテナ側にはブラウザがないので 。
 # "--allow-root" => rootユーザーの許可。セキュリティ的には良くないので、自分で使うときだけ。:これば外す
 # "--NotebookApp.token=''" => トークンなしで起動許可。これもセキュリティ的には良くない。
-ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--NotebookApp.token='', --allow-root"]
+ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
 
 # CMD命令はコンテナ起動時に実行するコマンドを指定（docker runの時に上書きする可能性のあるもの）
 # "--notebook-dir=/workdir" => Jupyter Labのルートとなるディレクトリを指定
