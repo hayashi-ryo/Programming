@@ -1,0 +1,3 @@
+# 特定のディレクトリを無視
+/.idea/
+/data/.ipynb_checkpoints/
