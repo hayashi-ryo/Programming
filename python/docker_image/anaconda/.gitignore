@@ -1,0 +1,6 @@
+# 特定のディレクトリを無視
+/.idea/
+/data/.ipynb_checkpoints/
+/.ipynb_checkpoints/
+/data/lesson9/demo/
+*.pyc

@@ -4,7 +4,11 @@ FROM continuumio/anaconda3
 # pipのアップグレードと必要なパッケージインストールを実行
 RUN pip install --upgrade pip && \
 pip install autopep8 && \
-pip install Keras 
+pip install Keras && \
+pip install pep8 && \
+pip install flake8 && \
+pip install pylint
+
 
 # コンテナのルートディレクトリにworkディレクトリを作成する
 WORKDIR /work
