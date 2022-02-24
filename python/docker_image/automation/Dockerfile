@@ -1,33 +1,30 @@
-# 参考サイト
-# https://qiita.com/jhorikawa_err/items/fb9c03c0982c29c5b6d5
 # ベースイメージ:タグ名
-FROM python:3.9
-USER root
+FROM continuumio/anaconda3
 
-# 環境設定
-RUN apt-get update
-RUN apt-get -y install locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-ENV TERM xterm
+# pipのアップグレードと必要なパッケージインストールを実行
+RUN pip install --upgrade pip && \
+    pip install autopep8 && \
+    pip install Keras && \
+    pip install pep8 && \
+    pip install flake8 && \
+    pip install pylint
 
-# pipインストール
-RUN apt-get install -y vim less
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
 
-RUN python -m pip install jupyterlab
-
-# コンテナのworkディレクトリを作成する
+# コンテナのルートディレクトリにworkディレクトリを作成する
 WORKDIR /work
-# COPY requirements.txt ./
-# RUN pip install --no-cache-dir -r requirements.txt
-# COPY . .
-# コンテナのリッスンポート番号
-EXPOSE 9999
 
-# コマンド実行
-# CMD [ "python", "./your-daemon-or-script.py" ]
+# コンテナのリッスンポート番号
+EXPOSE 8888
+
+# ENTRYPOINT命令はコンテナ起動時に実行するコマンドを指定（基本docker runの時に上書きしないもの）
+# "jupyter-lab" => jupyter-lab立ち上げコマンド
+# "--ip=0.0.0.0" => ip制限なし
+# "--port=8888" => EXPOSE命令で書いたポート番号と合わせる
+# ”--no-browser” => ブラウザを立ち上げない。コンテナ側にはブラウザがないので 。
+# "--allow-root" => rootユーザーの許可。セキュリティ的には良くないので、自分で使うときだけ。:これば外す
+# "--NotebookApp.token=''" => トークンなしで起動許可。これもセキュリティ的には良くない。
+ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+
+# CMD命令はコンテナ起動時に実行するコマンドを指定（docker runの時に上書きする可能性のあるもの）
+# "--notebook-dir=/workdir" => Jupyter Labのルートとなるディレクトリを指定
+CMD ["--notebook-dir=/work"]
