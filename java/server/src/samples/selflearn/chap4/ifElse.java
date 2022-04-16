@@ -1,5 +1,3 @@
-import javax.swing.plaf.synth.SynthStyle;
-
 public class ifElse {
     public static void main(String[] args) {
         var i = 100;
