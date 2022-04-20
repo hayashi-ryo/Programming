@@ -16,18 +16,16 @@ LinuC
     └──data:マウントフォルダ
 ```
 
-### 実施内容
-
 ### 環境構築
 
 1. dockerイメージのビルド
    1. dockerfileの作成s
    2. ビルド命令の実行
-        `docker build --rm -t local/c7-systemd .`
-        `docker images`
+      `docker build --rm -t local/c7-systemd .`
+      `docker images`
 2. docker起動設定
    1. docker-composer.ymlの作成
    2. 起動コマンドを実行
-        `docker-compose up`
+      `docker-compose up -d`
 3. アクセス
 4. その他コマンド

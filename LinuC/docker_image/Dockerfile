@@ -1,5 +1,5 @@
 # 参考サイト
-#
+#　https://weblabo.oscasierra.net/docker-centos7/
 # ベースイメージ:タグ名
 FROM centos:7
 ENV container docker
