@@ -28,4 +28,6 @@ LinuC
    2. 起動コマンドを実行
       `docker-compose up -d`
 3. アクセス
+   1. `docker exec -it docker_image_dev_1 /bin/bash`
+      でアクセス。remote containers だとうまくアクセスできない。
 4. その他コマンド
