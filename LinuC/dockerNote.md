@@ -21,13 +21,15 @@ LinuC
 1. dockerイメージのビルド
    1. dockerfileの作成s
    2. ビルド命令の実行
-      `docker build --rm -t local/c7-systemd .`
+      `docker build --rm -t c7-systemd .`
       `docker images`
 2. docker起動設定
    1. docker-composer.ymlの作成
-   2. 起動コマンドを実行
+   2. 起動コマンドsを実行
       `docker-compose up -d`
+   3. 別の起動コマンド
+      ``
 3. アクセス
-   1. `docker exec -it docker_image_dev_1 /bin/bash`
+   1. `docker exec -it test /bin/bash`
       でアクセス。remote containers だとうまくアクセスできない。
 4. その他コマンド
