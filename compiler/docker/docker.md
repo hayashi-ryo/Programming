@@ -1,18 +1,22 @@
-# LinuC学習用環境の構築
+# コンパイラ勉強用環境の構築
 
-LinuC level2勉強のための環境を整備する
+「ふつうのコンパイラを作ろう」の学習用環境を作成する
 
 ## 構成概要
 
 - イメージ
   - centos7のdocker環境を導入する
+  - centos上にJREを導入する
+    - jdk11を導入する
 - フォルダ構成
 
 ``` dir
-LinuC
-└──docker_image
+compiler
+└──docker
     ├──Dockerfile
     ├──docker-compose.yml
+    ├──jdk:jdk11のベースイメージを格納する
+    ├──cbc:cbcコンパイラのtar.gzを格納する
     └──data:マウントフォルダ
 ```
 
@@ -21,15 +25,9 @@ LinuC
 1. dockerイメージのビルド
    1. dockerfileの作成
    2. ビルド命令の実行
-      `docker build --rm -t c7-systemd .`
-      `docker images`
+    `docker build --rm -t c7-jdk11 .`
+    `docker images`
 2. docker起動設定
    1. docker-composer.ymlの作成
    2. 起動コマンドを実行
-      `docker-compose up -d`
-   3. 別の起動コマンド
-      ``
 3. アクセス
-   1. `docker exec -it test /bin/bash`
-      でアクセス。remote containers だとうまくアクセスできない。
-4. その他コマンド
