@@ -15,9 +15,10 @@ compiler
 └──docker
     ├──Dockerfile
     ├──docker-compose.yml
-    ├──jdk:jdk11のベースイメージを格納する
+    ├──base:必要なベースイメージを格納する
+    jdk11のベースイメージを格納する
     ├──cbc:cbcコンパイラのtar.gzを格納する
-    └──data:マウントフォルダ
+    └──data:マウントフォルダ。/work/sourceにマウントする
 ```
 
 ### 環境構築
@@ -25,7 +26,7 @@ compiler
 1. dockerイメージのビルド
    1. dockerfileの作成
    2. ビルド命令の実行
-    `docker build --rm -t c7-jdk11 .`
+    `docker build --rm -t c7-cbc .`
     `docker images`
 2. docker起動設定
    1. docker-composer.ymlの作成

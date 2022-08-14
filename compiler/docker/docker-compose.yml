@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: c7-jdk11
+    image: c7-cbc
     volumes:
       - ./data:/work/source/
     # 以下のエラーに対応するために追記
