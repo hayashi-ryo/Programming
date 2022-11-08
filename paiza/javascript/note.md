@@ -1,0 +1,5 @@
+# jacascrpit
+
+## コメント
+
+- javascriptのコメントはよくある//

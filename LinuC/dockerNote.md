@@ -19,13 +19,13 @@ LinuC
 ### 環境構築
 
 1. dockerイメージのビルド
-   1. dockerfileの作成s
+   1. dockerfileの作成
    2. ビルド命令の実行
       `docker build --rm -t c7-systemd .`
       `docker images`
 2. docker起動設定
    1. docker-composer.ymlの作成
-   2. 起動コマンドsを実行
+   2. 起動コマンドを実行
       `docker-compose up -d`
    3. 別の起動コマンド
       ``
