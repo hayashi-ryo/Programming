@@ -1,0 +1,12 @@
+version: '3'
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 9cc
+    ports:
+      - "6666:6666"
+    volumes:
+      - ./data:/work
+    tty: true
