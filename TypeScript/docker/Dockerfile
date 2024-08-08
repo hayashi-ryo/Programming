@@ -14,6 +14,8 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
 # Install TypeScript globally
 RUN npm install -g typescript
 
+# Install Yarn
+RUN npm install -g yarn
 # Create a working directory
 WORKDIR /usr/src/app
 
